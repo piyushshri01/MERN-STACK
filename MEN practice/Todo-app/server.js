@@ -67,7 +67,7 @@ app.post('/api/v1/login', (req, res)=>{
 });
 
 
-let todos = []
+let todos = [{1:1, "title":"hello"}, {2:2, "title":"hello world"}]
 // create a task
 app.post('/api/v1/createTask',verifiy, (req, res)=> {
     const {id, title} = req.body
