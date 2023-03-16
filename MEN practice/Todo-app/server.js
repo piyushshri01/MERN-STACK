@@ -81,7 +81,7 @@ app.post('/api/v1/createTask',verifiy, (req, res)=> {
 })
 
 // get all task
-app.get('/api/v1/getAllTask',verifiy, (req, res)=> {
+app.get('/api/v1/getAllTask', (req, res)=> {
     res.json({
         message: "all tasks",
         todos
