@@ -8,7 +8,7 @@ const app = express()
 const PORT = 3000;
 app.use(
     cors({
-      origin: "www.com",
+      origin: "https://ibuo51.csb.app/",
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
