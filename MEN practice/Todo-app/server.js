@@ -22,6 +22,10 @@ app.use(bodyParser.json());
 
 let users = []
 // create a profile
+app.get("/", (req, res)=> {
+    res.send("Hello Friends")
+})
+
 app.post('/api/v1/signup', (req, res)=>{
     let data = req.body
     let message = "user registered successfully"
