@@ -12,7 +12,7 @@ export const Login = () => {
     e.preventDefault();
     const user = { email, password };
     const res = await axios.post(
-      "https://todolist-api-henna.vercel.app/v1/login",
+      "https://todo-api-main-server.vercel.app/v1/login",
       user
     );
     console.log(res.data);

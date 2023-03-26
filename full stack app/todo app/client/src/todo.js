@@ -11,7 +11,7 @@ const ToDoList = () => {
   const getTasks = async () => {
     try {
       const response = await axios.get(
-        "https://todolist-api-henna.vercel.app/getTasks"
+        "https://todo-api-main-server.vercel.app/getTasks"
       );
       setTasks(response.data);
     } catch (error) {
@@ -22,7 +22,7 @@ const ToDoList = () => {
   const createTask = async () => {
     try {
       const response = await axios.post(
-        "https://todolist-api-henna.vercel.app/createTask",
+        "https://todo-api-main-server.vercel.app/createTask",
         {
           title: newTask,
           id: nxtId
@@ -44,7 +44,7 @@ const ToDoList = () => {
 
       if (token) {
         const res = await fetch(
-          `https://todolist-api-henna.vercel.app/removeTask/${id}`,
+          `https://todo-api-main-server.vercel.app/removeTask/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -63,7 +63,7 @@ const ToDoList = () => {
   const editTask = async (id, title) => {
     try {
       const res = await axios.put(
-        `https://todolist-api-henna.vercel.app/editTask/${id}`,
+        `https://todo-api-main-server.vercel.app/editTask/${id}`,
         { title }
       );
       console.log(id, title);

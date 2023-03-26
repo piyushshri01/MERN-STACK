@@ -11,7 +11,16 @@ const cors = require('cors')
 const app = express();
 const port = 3000;
 app.use(cors({
-    origin: ['https://ibuo51.csb.app/', 'http://127.0.0.1:58235']
+    // origin: ['https://ibuo51.csb.app/', 'http://127.0.0.1:58235']
+    origin: '*',
+    methods: [
+        'GET',
+        'POST',
+    ],
+
+    allowedHeaders: [
+        'Content-Type',
+    ],
   }));
 
 // To parse URL encoded data

@@ -10,7 +10,7 @@ export const Signup = () => {
   const getData = async (e) => {
     e.preventDefault();
     const user = { name, email, password };
-    const res = await fetch(`https://todolist-api-henna.vercel.app/v1/signup`, {
+    const res = await fetch(`https://todo-api-main-server.vercel.app/v1/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
