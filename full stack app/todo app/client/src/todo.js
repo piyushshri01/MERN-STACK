@@ -9,25 +9,44 @@ const ToDoList = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useContext(userContext);
   const getTasks = async () => {
+    let token = localStorage.getItem("todoToken");
+    console.log(token);
+
     try {
-      const response = await axios.get(
-        "https://todo-api-main-server.vercel.app/getTasks"
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": `${token}`
+        }
+      };
+      const response = await fetch(
+        "https://todo-api-main-server.vercel.app/getTasks",
+        config
       );
-      setTasks(response.data);
+      // console.log(await response.json(), "responsse");
+      let data = await response.json();
+      setTasks(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const createTask = async () => {
+    let token = localStorage.getItem("todoToken");
     try {
       const response = await axios.post(
         "https://todo-api-main-server.vercel.app/createTask",
         {
           title: newTask,
-          id: nxtId
+          token
+        },
+        {
+          headers: {
+            "x-access-token": `${localStorage.getItem("todoToken")}`
+          }
         }
       );
+      // console.log(response.data, "response");
 
       setTasks([...tasks, response.data["data"]]);
       setNxtId(nxtId + 1);
@@ -40,9 +59,15 @@ const ToDoList = () => {
   const removeTask = async (id) => {
     try {
       let token = localStorage.getItem("todoToken");
-      console.log(token, "token");
+      // console.log(token, "token");
 
       if (token) {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": `${token}`
+          }
+        };
         const res = await fetch(
           `https://todo-api-main-server.vercel.app/removeTask/${id}`,
           {
@@ -53,24 +78,35 @@ const ToDoList = () => {
             body: JSON.stringify({ token })
           }
         );
-        setTasks(await res.json());
+        // console.log(await res.json(), "res");
+        getTasks();
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
   const editTask = async (id, title) => {
+    const new_title = title;
     try {
-      const res = await axios.put(
+      let token = localStorage.getItem("todoToken");
+
+      const res = await fetch(
         `https://todo-api-main-server.vercel.app/editTask/${id}`,
-        { title }
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ token, new_title })
+        }
       );
+
       console.log(id, title);
       console.log(res, "res");
 
       const updatedTasks = tasks.map((task) => {
-        if (task.id === id) {
+        if (task._id === id) {
           task.title = title;
         }
         return task;
@@ -103,16 +139,16 @@ const ToDoList = () => {
       <div className="tasks-container">
         {tasks.length &&
           tasks.map((task) => (
-            <div key={task.id} className="task">
+            <div key={task._id} className="task">
               <span>{task.title}</span>
               <button
                 onClick={() =>
-                  editTask(task.id, prompt("Enter new task", task.title))
+                  editTask(task._id, prompt("Enter new task", task.title))
                 }
               >
                 Edit
               </button>
-              <button onClick={() => removeTask(task.id)}>Delete</button>
+              <button onClick={() => removeTask(task._id)}>Delete</button>
             </div>
           ))}
       </div>
