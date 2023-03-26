@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px;
+  color: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-links {
+  display: flex;
+}
+
+.navbar-links a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-links button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navbar-links button:hover {
+  text-decoration: underline;
+}
