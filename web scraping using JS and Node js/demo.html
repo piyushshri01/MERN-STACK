@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="chng"></h1>
+    <button onclick="myFn()">Stop me</button>
+<script>
+    const b = setInterval(xyz, 1000)
+
+    function xyz(){
+        const date = new Date()
+        document.getElementById("chng").innerHTML = date.toLocaleTimeString();
+    }
+    
+    function myFn(){
+        console.log("hello");
+        // clearInterval(b)
+        clearInterval(b);
+    }
+</script>
+</body>
+</html>

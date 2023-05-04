@@ -1,0 +1,32 @@
+[
+    {
+        "Name": "????????",
+        "SName": "______________",
+        "bool": true,
+        "arr": [
+            "city",
+            "state",
+            "country"
+        ],
+        "obj": {
+            "Name": "????????",
+            "SName": "_________________",
+            "bool": true,
+            "arr": [
+                "city",
+                "state",
+                "country"
+            ]
+        }
+    },
+    {
+        "Name": "XYZ",
+        "SName": "ijk",
+        "bool": true,
+        "arr": [
+            "city",
+            "state",
+            "country"
+        ]
+    }
+]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+        <form class="signup">
+        <div class="field">
+            <input type="email" placeholder="Email Address" required />
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Name" required />
+        </div>
+        <div class="field">
+            <input type="password" placeholder="Password" required />
+        </div>
+        <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Signup" />
+        </div>
+        </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let btn = document.querySelector("input[type='submit']")
+        btn.addEventListener('click', async function(e){
+            e.preventDefault();
+            let email = document.querySelector("input[type='email']").value;
+            let name = document.querySelector("input[type='text']").value;
+            let password = document.querySelector("input[type='password']").value;
+            
+            let resp = await axios.post("/auth/signup", {email,name,password})
+            console.log("resp", resp);
+
+        })
+    </script>
+  </body>
+</html>
